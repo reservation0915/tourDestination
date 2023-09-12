@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @Service
 public class JwtService {
-    @Value("${jwt.SECRET_KEY}")
+    @Value("${jwt.secret}")
     private String secret;
 
 
@@ -23,6 +23,7 @@ public class JwtService {
         return TokenInfo.builder()
                 .id(UUID.fromString(claims.get("id", String.class)))
                 .username(claims.get("username", String.class))
+                .email(claims.get("email", String.class))
                 .role(Role.valueOf(claims.get("role", String.class)))
                 .build();
     }
@@ -35,7 +36,7 @@ public class JwtService {
                 .setClaims(extraClaims)
                 .setSubject(user.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 30))
                 .signWith(SignatureAlgorithm.HS256, secret.getBytes())
                 .compact();
     }

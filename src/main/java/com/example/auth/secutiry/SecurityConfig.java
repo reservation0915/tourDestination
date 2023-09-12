@@ -30,6 +30,7 @@ public class SecurityConfig {
                         AntPathRequestMatcher.antMatcher("/api/v1/auth/signup"),
                         AntPathRequestMatcher.antMatcher("/api/v1/auth/test"),
                         AntPathRequestMatcher.antMatcher("/api/v1/auth/login"),
+                        AntPathRequestMatcher.antMatcher("/api/v1/myuser/**"),
                         AntPathRequestMatcher.antMatcher("/actuator/**")
                 ).permitAll()
                 .anyRequest().authenticated()
