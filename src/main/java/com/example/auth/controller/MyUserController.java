@@ -26,6 +26,4 @@ public class MyUserController {
     public MyUser me(@AuthenticationPrincipal TokenInfo tokenInfo) {
         return myUserService.getById(tokenInfo.getId());
     }
-
-
 }
