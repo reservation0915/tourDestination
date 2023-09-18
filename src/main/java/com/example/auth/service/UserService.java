@@ -52,4 +52,11 @@ public class UserService {
         return new TokenInfoResponse(tokenInfo.getId(), tokenInfo.getUsername(),tokenInfo.getEmail(), tokenInfo.getRole().name());
     }
 
+    //내가 적음 수정함
+    public TokenInfo getTokenInfo(String token)
+    {
+        return jwtService.extractUser(token);
+    }
+
+
 }

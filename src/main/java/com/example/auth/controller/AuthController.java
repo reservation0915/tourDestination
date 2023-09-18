@@ -30,5 +30,10 @@ public class AuthController {
     public TokenInfoResponse me(@AuthenticationPrincipal TokenInfo tokenInfo) {
         return userService.getMe(tokenInfo);
     }
+    @GetMapping("/getTokenInfo")
+    public TokenInfo getTokenInfo(@PathVariable("token") String token)
+    {
 
+        return userService.getTokenInfo(token);
+    }
 }
